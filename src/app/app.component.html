@@ -1,20 +1,61 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<html>
+<body>
+  <main class="content">
+    <div style="text-align:center">
+      <h2>{{ title }}!</h2>
+      <img
+        width="300"
+        alt="Angular Logo"
+        width="15%"
+        height="15%"
+        src="assets/images/robot.png"
+      />
+    </div>
 
+    <div style="text-align:center">
+      <input
+        type="text"
+        name="word"
+        id="word"
+        [(ngModel)]="word"
+        placeholder="Type your word here!"
+        (ngModelChange)="clearDefinition()"
+        required
+      />
+    </div>
+    <div class="lookup">
+      <button type="button" (click)="search()">LOOK UP!</button>
+    </div>
+
+    <div>
+      <img id="spinner" src="assets/images/progress5.gif" *ngIf="!definition" />
+      <!-- <textarea
+      rows="10"
+      cols="80"
+      [(ngModel)]="definition"
+      disabled
+      placeholder="Word Definition!"
+    ></textarea> -->
+      <div [hidden]="!apistatus" class="card">
+        <p class="word">Word Searched: {{ word }}</p>
+        <p class="definition">{{ definition }}</p>
+      </div>
+    </div>
+    <div class="push"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="attribution">
+      Spinner by <a href="https://loading.io">loading.io</a> under Creative
+      Commons License! <br />
+      Robot Image by
+      <a
+        href="https://www.clipartmax.com/middle/m2i8K9d3Z5G6i8G6_robot-robotics-technology-software-illustration-transparent-background-robot-clipart/"
+        >Robot Robotics Technology Software Illustration - Transparent
+        Background Robot Clipart @clipartmax.com</a
+      >
+    </div>
+  </footer>
+</body>
+</html>
