@@ -1,6 +1,7 @@
 @media screen{
   .main-container {
     margin-left: 0px !important;
+    overflow-y: hidden;
   }
   .content {
     background-color: lightgoldenrodyellow;

@@ -4,12 +4,7 @@
   line-height: normal;
   font-size: 9px;
   text-align: right;
+  background-color: lightgoldenrodyellow;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-@media screen {
-  .main-container {
-    margin-left: 0px !important;
-  }
 }
