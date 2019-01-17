@@ -29,17 +29,17 @@ export class WordLookupComponent implements OnInit {
         this.robotStatus = data;
         this.apistatus = this.robotStatus.status;
         this.definition = this.robotStatus.currentTermDefinition;
-        console.log(this.robotStatus);
       },
       (error: any) => {
+        this.definition = 'Whoops! ';
         if (JSON.parse(JSON.stringify(error)).error.status !== undefined) {
-          this.definition =
-            'Whoops! ' + JSON.parse(JSON.stringify(error)).error.status;
+          this.definition = this.definition += JSON.parse(
+            JSON.stringify(error)
+          ).error.status;
         } else {
-          this.definition =
-            'Whoops! Network Error Occured Please Check Backend Service';
+          this.definition +=
+            'Network Error Occured Please Check Backend Service';
         }
-
         this.apistatus = 'error';
       }
     );
