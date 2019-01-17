@@ -1,0 +1,79 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<section class="main-container">
+  <main class="content">
+    <form class="form-horizontal" #wordSearchForm="ngForm">
+      <div style="text-align:center">
+        <h2>{{ title }}!</h2>
+        <img
+          width="300"
+          alt="Angular Logo"
+          width="15%"
+          height="15%"
+          src="assets/images/robot.png"
+        />
+      </div>
+
+      <div style="text-align:center">
+        <input
+          type="text"
+          name="searchword"
+          id="searchword"
+          pattern="^[a-zA-Z]*"
+          [(ngModel)]="word"
+          placeholder="Type your word here!"
+          (ngModelChange)="clearDefinition()"
+          required
+          #searchword="ngModel"
+        />
+
+        <div
+          *ngIf="searchword.invalid && (searchword.dirty || searchword.touched)"
+          class="alert alert-warning"
+        >
+          <div *ngIf="searchword.errors.required">Search Word is Required.</div>
+          <div *ngIf="searchword.errors.pattern">
+            Word Must Start with an Alphabet.
+          </div>
+        </div>
+      </div>
+
+      <div class="lookup">
+        <button
+          type="button"
+          (click)="search()"
+          [disabled]="!wordSearchForm.form.valid"
+        >
+          LOOK UP!
+        </button>
+      </div>
+
+      <div>
+        <img
+          id="spinner"
+          src="assets/images/progress5.gif"
+          *ngIf="!definition"
+        />
+        <div [hidden]="!apistatus" class="card">
+          <p class="word">Word Searched: {{ word }}</p>
+          <p class="definition">{{ definition }}</p>
+        </div>
+      </div>
+      <div class="push"></div>
+    </form>
+  </main>
+
+  <!-- <footer class="footer">
+    <div class="attribution">
+      Spinner by <a href="https://loading.io">loading.io</a> under Creative
+      Commons License! <br />
+      Robot Image by
+      <a
+        href="https://www.clipartmax.com/middle/m2i8K9d3Z5G6i8G6_robot-robotics-technology-software-illustration-transparent-background-robot-clipart/"
+        >Robot Robotics Technology Software Illustration - Transparent
+        Background Robot Clipart @clipartmax.com</a
+      >
+    </div>
+  </footer> -->
+</section>
+<app-attribution></app-attribution>
