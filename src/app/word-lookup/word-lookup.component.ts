@@ -32,9 +32,14 @@ export class WordLookupComponent implements OnInit {
         console.log(this.robotStatus);
       },
       (error: any) => {
-        console.log('Error Occured', error);
-        this.definition =
-          'Whoops! ' + JSON.parse(JSON.stringify(error)).error.status;
+        if (JSON.parse(JSON.stringify(error)).error.status !== undefined) {
+          this.definition =
+            'Whoops! ' + JSON.parse(JSON.stringify(error)).error.status;
+        } else {
+          this.definition =
+            'Whoops! Network Error Occured Please Check Backend Service';
+        }
+
         this.apistatus = 'error';
       }
     );
